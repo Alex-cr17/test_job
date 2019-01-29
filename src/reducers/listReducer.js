@@ -32,6 +32,8 @@ function listReducer(state = initialState, action) {
     }
     else if(action.type === "EDITING_ITEM_SUCCESS") {
         if(action.payload) {
+    console.log(action.payload);
+
         const list = state.list.map(item => {
             if(item.id === action.payload) {
                 return { ...item, 
@@ -41,12 +43,7 @@ function listReducer(state = initialState, action) {
                     } 
                 }
             }
-            return { ...item, 
-                settings: {
-                    activated: true,
-                    editable: false
-                } 
-            }
+            return item;
           })
           return {
             ...state,
